@@ -30,9 +30,9 @@
 #---------------------------------------------------------------------------
 #
 
-from mcxnowcurrency import McxNowCurrency
+from .mcxnowcurrency import McxNowCurrency
 
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 
 class UserAccountHTMLParser(HTMLParser):
     #
@@ -55,7 +55,7 @@ class UserAccountHTMLParser(HTMLParser):
                         if attr[1]=='fundbox':
                             self.foundlevel=1
         else:
-            if tag<>'input':
+            if tag!='input':
                 self.foundlevel+=1
         
     def handle_endtag(self, tag):

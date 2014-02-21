@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Module mcxnowcurrency for mcxnowapi - Python 27
+# Module mcxnowcurrency for mcxnowapi - Python 3.2
 # 
 # Part of API for the crytpo market exchange mcxNow : https://mcxnow.com
 #
@@ -30,7 +30,7 @@
 #---------------------------------------------------------------------------
 #
 
-from currency import Currency
+from .currency import Currency
 
 class McxNowCurrency(Currency):
     def __init__(self):
@@ -42,7 +42,7 @@ class McxNowCurrency(Currency):
         self.Add("DVC", "Devcoin", 1)
         self.Add("WDC", "WorldCoin", 1)
         self.Add("PPC", "Peercoin", 1)
-
+        self.Add("MAX", "MaxCoin", 1)
 
 class McxNowTradedCurrency():
     #

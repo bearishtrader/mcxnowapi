@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# mcxnowapi - Python 27
+# mcxnowapi - Python 3.2 
 # 
 # API for the crytpo market exchange mcxNow : https://mcxnow.com
 #
@@ -30,5 +30,5 @@
 #---------------------------------------------------------------------------
 #
 
-from api import McxNowSession
-from mcxnowconstants import *
+from .api import McxNowSession
+from .mcxnowconstants import *

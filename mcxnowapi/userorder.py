@@ -30,7 +30,7 @@
 #---------------------------------------------------------------------------
 #
 
-from mcxnowcurrency import McxNowCurrency
+from .mcxnowcurrency import McxNowCurrency
 
 class UserOrder():
     #

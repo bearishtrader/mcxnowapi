@@ -2,12 +2,12 @@ mcxnowapi (Version 1.0)
 ==================
 
 This library provides some method to access at the fuctionnality of mcXnow.com crypto exchange market.
-You can develop your one application based on this Api with Python 2.7 (bot, gui,...).
+You can develop your one application based on this Api with Python 3.2 (bot, gui,...).
 
 Installation:
 -----------
 
-    just the cmd :      python setup.py install
+    just the cmd :      python3 setup.py install
     
 Module needed :
 --------------
@@ -206,7 +206,7 @@ The methfunctions are :
         #       self.Return=[None,0,$time$,$amt$,$price$] (because this order can be executed yet)
         # 
         
->S.SendBuyOrder(cur amt, price, confirm):
+>S.SendBuyOrder(cur, amt, price, confirm):
 
         #
         # SendBuyOrder : send a buy order 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Main Module for mcxnowapi - Python 27
+# Main Module for mcxnowapi - Python 3.2
 # 
 # API for the crytpo market exchange mcxNow : https://mcxnow.com
 #
@@ -37,15 +37,15 @@
 #
 
 import requests
-from request import request
+from .request import request
 import time
 
-from mcxnowuser import McxNowUser
-from mcxnowconstants import  *
-from mcxnowpublic import McxNowPublic
+from .mcxnowuser import McxNowUser
+from .mcxnowconstants import  *
+from .mcxnowpublic import McxNowPublic
 
-from htmlparse import UserAccountHTMLParser
-from mcxnowcurrency import McxNowCurrency
+from .htmlparse import UserAccountHTMLParser
+from .mcxnowcurrency import McxNowCurrency
 
 class McxNowSession():
     #---------------------------------------------------------------------------
@@ -200,15 +200,21 @@ class McxNowSession():
             if result==0:
                 return MCXNOW_ERROR['HTTP Error']
             else:
-                texthtml=result.text.encode('utf-8')
+                texthtml=result.text                
                 if self.__CheckSecretKey__(texthtml):
                     for cur in MCXNOW_ALLCURRENCY:
-                        if cur == 'PPC':
-                            self.User.Details.Funds[cur].Balance=float(texthtml\
-                            .split("PPC</tla><balavail>")[1].split("</baltotal><btctotal>")[0].split("<")[0])
-                        elif cur == 'BTC':
-                            self.User.Details.Funds[cur].Balance=float(texthtml\
-                            .split("PPC</tla><balavail>")[1].split("</baltotal><btctotal>")[0].split("<")[0])
+                        # Jason Chan: <bearish_trader@yahoo.com>
+                        # Added MaxCoin to mcxnowcurrency.py and fixed the 
+                        # parsing bug here
+                        part2="0.0"
+                        list1_delim = cur+"</tla><balavail>"                        
+                        list1 = texthtml.split(list1_delim)
+                        if (len(list1) > 1):
+                            part1 = list1[1]
+                            list2 = part1.split("</balavail><baltotal>")
+                            if (len(list2) > 0):                                
+                                part2 = list2[0]                                
+                        self.User.Details.Funds[cur].Balance=float(part2)
                         self.User.Details.Funds[cur].DepositAddress=''
                         self.User.Details.Funds[cur].MinimumDeposit=0.0
                         self.User.Details.Funds[cur].WithdrawFee=0.0
@@ -735,7 +741,7 @@ class McxNowSession():
                 skOk=True
             if skOk:
                 self.__LoadUserOrders__(cur, True)
-                if self.User.Book.Orders[cur]<>None:
+                if self.User.Book.Orders[cur]!=None:
                     if id in self.User.Book.Orders[cur].Id:
                         if self.User.Book.Orders[cur].Id[id].Confirmed:
                             self.Return=None
@@ -791,7 +797,7 @@ class McxNowSession():
                 skOk=True
             if skOk:
                 self.__LoadUserOrders__(cur, True)
-                if self.User.Book.Orders[cur]<>None:
+                if self.User.Book.Orders[cur]!=None:
                     if id in self.User.Book.Orders[cur].Id:
                         self.Return=self.User.Book.Orders[cur].GetOrderInfo(id)
                         self.Session.get(MCXNOW_DOMAIN+MCXNOW_ACTION["canceltrade"]+"&sk="+self.User.SecretKey+"&cur="+cur+'&id='+str(id))

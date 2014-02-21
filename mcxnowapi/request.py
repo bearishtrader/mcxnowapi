@@ -41,7 +41,7 @@ def request(S=None, method=None, action=None, data=None):
     if S==None or action==None or method==None:
         return 0
     else:
-        if method=='post' and data<>None:
+        if method=='post' and data!=None:
             try:
                 result=S.post(action, data)
             except:

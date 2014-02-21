@@ -30,10 +30,10 @@
 #---------------------------------------------------------------------------
 #
 
-from publicorder import PublicAllOrders
-from historyorder import HistoryAllOrders
-from chat import Chat
-from mcxnowcurrency import McxNowTradedCurrency
+from .publicorder import PublicAllOrders
+from .historyorder import HistoryAllOrders
+from .chat import Chat
+from .mcxnowcurrency import McxNowTradedCurrency
 
 class McxNowPublic():
     #

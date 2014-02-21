@@ -94,7 +94,7 @@ class Currency():
 
     def Add(self, code=None, name=None, traded=0):
         # Add a new currency
-        if code<>None and name<>None:
+        if code!=None and name!=None:
             self.List.append(OneCurrency(code, name, traded))
 
 

@@ -30,7 +30,7 @@
 #---------------------------------------------------------------------------
 #
 
-from mcxnowcurrency import McxNowCurrency
+from .mcxnowcurrency import McxNowCurrency
 
 MCXNOW_DOMAIN="https://mcxnow.com"
 MCXNOW_ALLCURRENCY=McxNowCurrency().GetCodeAll()

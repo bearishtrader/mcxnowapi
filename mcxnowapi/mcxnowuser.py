@@ -30,9 +30,9 @@
 #---------------------------------------------------------------------------
 #
 
-from mcxnowcurrency import McxNowCurrency
-from useraccount import UserDetails
-from userorder import UserAllOrders
+from .mcxnowcurrency import McxNowCurrency
+from .useraccount import UserDetails
+from .userorder import UserAllOrders
 
 class McxNowUser():
     #
