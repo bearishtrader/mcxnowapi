@@ -616,7 +616,7 @@ class McxNowSession():
                     #if type=='Sell':
                     if (amt>cur_bal and type==0) or (amt>base_bal and type==1):
                         return MCXNOW_ERROR['Trade Error No Enough Coins']
-                    elif (amt<0.2 and type ==0) or (amt<0.01 and type==1):
+                    elif (amt<0.1 and type ==0) or (amt<0.0001 and type==1):
                         return MCXNOW_ERROR['Trade Error Minimum Request']
                     elif price<0.00000001:
                         return MCXNOW_ERROR['Trade Error Price below minimum']
