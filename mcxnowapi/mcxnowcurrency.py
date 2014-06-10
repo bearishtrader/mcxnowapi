@@ -43,6 +43,9 @@ class McxNowCurrency(Currency):
         self.Add("WDC", "WorldCoin", 1)
         self.Add("PPC", "Peercoin", 1)
         self.Add("MAX", "MaxCoin", 1)
+        self.Add("MAX", "FeatherCoin", 1)
+        self.Add("MAX", "DevCoin", 1)
+        self.Add("MAX", "DogeCoin", 1)
 
 class McxNowTradedCurrency():
     #
